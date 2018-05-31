@@ -1,0 +1,74 @@
+1. Alap adatok
+
+	1) Alhálózati adatok: 192.168.0.0/22 (255.255.252.0)
+	2) Mérésre használt munkaállomás: 192.168.0.110/22 (255.255.252.0)
+	3) Alhálózat átjárója: 192.168.0.254/22 (255.255.252.0)
+	4) Windows szerver IP címe: 192.168.1.100
+	5) Linux szerver IP címe: 192.168.2.144
+
+2. Mérések traceroute-tal
+
+	1) Útvonal és válaszidő a Windows szerver felé: 
+
+	 1?: [LOCALHOST]                                         pmtu 1500
+	 1:  192.168.1.100                                         1.504ms reached
+	 1:  192.168.1.100                                         1.149ms reached
+		Resume: pmtu 1500 hops 1 back 1
+
+	2) Útvonal és válaszidő a Google DNS szervere felé (8.8.8.8): 
+
+	
+
+	3) Útvonal és válaszidő az umszki.hu felé: 
+
+	 1?: [LOCALHOST]                                         pmtu 1500
+	 1:  192.168.0.254                                         0.680ms 
+	 1:  192.168.0.254                                         0.722ms 
+	 2:  10.2.0.2                                              2.423ms 
+	 3:  no reply
+	 4:  10.1.1.22                                             4.034ms asymm  3 
+	 5:  no reply
+	 6:  catv-80-98-51-254.catv.broadband.hu                  17.187ms asymm  4 
+	 7:  catv-89-135-214-61.catv.broadband.hu                 20.525ms asymm  5 
+	 8:  hu-bud03a-rc1-ae46-2035.aorta.net                    18.774ms asymm  9 
+	 9:  hu-bud06a-ri1-ae4-0.aorta.net                        29.335ms asymm  7 
+	10:  bpt-b4-link.telia.net                                41.982ms asymm  8 
+	11:  dravanet-ic-324273-bpt-b4.c.telia.net                18.396ms asymm  9 
+	12:  62.112.213.207                                       16.997ms asymm 10 
+	13:  62.112.213.207                                       19.699ms reached
+		Resume: pmtu 1500 hops 13 back 12 
+
+3. Internethozzáférési sebesség mérése speedtest paranccsal
+
+	Testing from UPC Magyarorszag (89.135.98.64)...
+	Selecting best server based on latency...
+	Hosted by ATW Internet Kft. (Budapest) [2.50 km]: 17.527 ms
+	Testing download speed
+	Download: 46.58 Mbit/s
+	Testing upload speed
+	Upload: 3.99 Mbit/s
+
+4. Nyitott portok keresése
+
+	1) Mérésre használt munkaállomáson levő nyitott portok: 22
+	2) A Windows szerveren levő nyitott portok: 53, 88, 135, 139, 389, 445, 464, 593, 636, 3268, 3269, 49152, 49153, 49154, 49155, 49157, 49158, 49176
+	3) A Linux szerveren levő nyitott portok: 22, 80
+	4) Az átjárón levő nyitott portok: 22, 53, 80, 666
+	5) A Google DNS szerverének nyitott portjai: 53, 443
+
+5. A nyitott portok alapján felismert hálózati szolgáltatások
+
+	1) ssh
+	2) domain
+	3) ssh, http
+	4) ssh, domain, http
+	5) domain, https
+
+6. A mérésre használt munkaállomás ARP táblája
+
+	Address                  HWtype  HWaddress           Flags Mask            Iface
+	192.168.1.100            ether   08:00:27:37:15:3f   C                     enp2s0
+	192.168.2.144            ether   08:00:27:1e:25:c3   C                     enp2s0
+	192.168.0.254            ether   c8:3a:35:d4:43:da   C                     enp2s0
+	192.168.0.100            ether   d8:cb:8a:38:5d:24   C                     enp2s0
+
