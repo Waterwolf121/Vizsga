@@ -1,4 +1,4 @@
-# Vizsga
+# Megoldások / Jegyzetek
 
 ### 2. Feladat
 ```
